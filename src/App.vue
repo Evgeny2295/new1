@@ -21,8 +21,8 @@ export default {
   <div>
     <div>Количество лайков: {{likes}}</div>
     <div>Количество дизлайков: {{disLikes}}</div>
-    <button v-on:click="addLikes">Нравится</button>
-    <button v-on:click="addDisLikes">не нравится</button>
+    <button @click="addLikes">Нравится</button>
+    <button @click="addDisLikes">не нравится</button>
   </div>
 </template>
 
