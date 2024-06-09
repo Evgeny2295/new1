@@ -1,5 +1,13 @@
 <script>
+import PostLIst from "@/components/PostList.vue";
+import PostForm from "@/components/PostForm.vue";
+import PostList from "@/components/PostList.vue";
 export default {
+  components:{
+    PostList,
+    PostForm,PostLIst
+  },
+
   data(){
     return{
      posts: [
@@ -28,15 +36,8 @@ export default {
 
 <template>
   <div>
-    <form action="" @submit.prevent>
-      <input @input="title=$event.target.value" v-bind:value="title" type="text" class="input" placeholder="Введите название">
-      <input @input="body=$event.target.value" v-bind:value="body" type="text" class="input" placeholder="Введите описание">
-      <button @click="createPost" class="btn">Добавить</button>
-    </form>
-    <div class="post" v-for="post in posts">
-      <div><strong>Название:</strong>{{ post.title }}</div>
-      <div><strong>Описание:</strong>{{ post.body }}</div>
-    </div>
+    <post-form/>
+    <post-list v-bind:posts="posts"/>
   </div>
 </template>
 
@@ -46,9 +47,5 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.post{
-  padding: 15px;
-  border: 2px solid blue;
-  margin-top: 15px;
-}
+
 </style>
