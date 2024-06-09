@@ -1,5 +1,8 @@
 <script>
+import MyInput from "@/components/UI/MyInput.vue";
+
 export default {
+  components: {MyInput},
   data(){
     return {
       post:{
@@ -24,8 +27,8 @@ export default {
 
 <template>
   <form action="" @submit.prevent>
-    <input v-model="post.title" type="text" class="input" placeholder="Введите название">
-    <input v-model="post.body" type="text" class="input" placeholder="Введите описание">
+    <my-input v-model="post.title" placeholder="Введите название"/>
+    <my-input v-model="post.body" placeholder="Введите описание"/>
     <my-button @click="createPost" class="btn">Создать</my-button>
   </form>
 </template>
