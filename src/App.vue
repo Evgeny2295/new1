@@ -37,7 +37,7 @@ export default {
 <template>
   <div>
     <post-form/>
-    <post-list v-bind:posts="posts"/>
+    <post-list :posts="posts"/>
   </div>
 </template>
 
