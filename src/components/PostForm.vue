@@ -7,14 +7,25 @@ export default {
         body:''
       }
     }
+  },
+  methods:{
+    createPost(){
+
+      this.post.id = Date.now();
+      this.$emit('create',this.post);
+      this.post = {
+        title:'',
+        body:''
+      }
+    }
   }
 }
 </script>
 
 <template>
   <form action="" @submit.prevent>
-    <input @input="post.title=$event.target.value" v-bind:value="post.title" type="text" class="input" placeholder="Введите название">
-    <input @input="post.body=$event.target.value" v-bind:value="post.body" type="text" class="input" placeholder="Введите описание">
+    <input v-model="post.title" type="text" class="input" placeholder="Введите название">
+    <input v-model="post.body" type="text" class="input" placeholder="Введите описание">
     <button @click="createPost" class="btn">Добавить</button>
   </form>
 </template>
