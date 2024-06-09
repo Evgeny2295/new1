@@ -26,7 +26,7 @@ export default {
   <form action="" @submit.prevent>
     <input v-model="post.title" type="text" class="input" placeholder="Введите название">
     <input v-model="post.body" type="text" class="input" placeholder="Введите описание">
-    <button @click="createPost" class="btn">Добавить</button>
+    <my-button @click="createPost" class="btn">Создать</my-button>
   </form>
 </template>
 
