@@ -19,6 +19,7 @@ export default {
 
      ],
       dialogVisible:false,
+      isPostLoading: false,
     }
   },
   methods:{
@@ -34,24 +35,33 @@ export default {
     },
     async fetchPosts(){
       try{
-        const responce = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
-        this.posts = responce.data
+        this.isPostLoading = true
+        setTimeout(async()=>{
+          const responce = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=10')
+          this.posts = responce.data
+        },1000)
       }catch(e){
         alert('Ошибка')
+      }finally{
+        this.isPostLoading = false
       }
-    }
+
+    },
+  },
+  mounted(){
+    this.fetchPosts()
   }
 }
 </script>
 
 <template>
   <div>
-    <my-button @click="fetchPosts">Получить посты</my-button>
     <my-button @click="showDialog">Создать</my-button>
     <my-dialog v-model:show="dialogVisible" >
       <post-form @create="createPost"/>
     </my-dialog>
-    <post-list :posts="posts" @remove="removePost" />
+    <post-list v-if="!isPostLoading" :posts="posts" @remove="removePost"/>
+    <div v-else>Идет загрузка...</div>
   </div>
 </template>
 
